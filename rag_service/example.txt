@@ -1,0 +1,19 @@
+curl -X GET "http://localhost:8000/health"   -H "accept: application/json"
+
+curl -X POST "http://localhost:8000/query" -H "Content-Type: application/json" -d '{
+    "query": "Что такое RAG?",
+    "collection_name": "my_collection",
+    "top_k": 5,
+    "score_threshold": 0.6,
+    "temperature": 0.1
+}'
+
+curl http://localhost:8000/collections
+
+Если пользователю нужен только контекст без генерации ответа:
+curl -X POST "http://localhost:8000/search" -H "Content-Type: application/json" -d '{
+    "query": "Как работает RAG?",
+    "collection_name": "my_collection",
+    "top_k": 5,
+    "score_threshold": 0.6
+}'
