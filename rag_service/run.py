@@ -1,15 +1,16 @@
 import uvicorn
-from config.settings import API_HOST, API_PORT
-from logs.logger import setup_logger
+from rag_service.config.settings import API_HOST, API_PORT
+import logging
 
-logger = setup_logger()
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    logger.info(f"Запуск RAG Service API на {API_HOST}:{API_PORT}")
+    logger.info(f"Starting RAG Service API on {API_HOST}:{API_PORT}")
     uvicorn.run(
-        "app.main:app",
+        "rag_service.app.main:app",
         host=API_HOST,
-        port=API_PORT,
-        reload=False,
-        log_level="info"
+         port=(API_PORT),
+        reload=True,
+        log_level="info",
     )

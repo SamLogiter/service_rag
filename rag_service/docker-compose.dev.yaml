@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: rag_max-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    environment:
+      - QDRANT_HOST=${QDRANT_HOST}
+      - QDRANT_PORT=${QDRANT_PORT}
+      - API_HOST=${API_HOST}
+      - API_PORT=${API_PORT}
+      - VLLM_GEN_HOST=${VLLM_GEN_HOST}
+      - VLLM_GEN_PORT=${VLLM_GEN_PORT}
+      - VLLM_GEN_MODEL=${VLLM_GEN_MODEL}
+      - VLLM_EMBED_HOST=${VLLM_EMBED_HOST}
+      - VLLM_EMBED_PORT=${VLLM_EMBED_PORT}
+      - VLLM_EMBED_MODEL=${VLLM_EMBED_MODEL}
+      - GIT_PYTHON_REFRESH=quiet
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - rag-max
+    volumes:
+      - .:/app
+
+
+networks:
+  rag-max:
