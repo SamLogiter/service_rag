@@ -1,0 +1,13 @@
+QDRANT_HOST=localhost
+QDRANT_PORT=6333
+API_HOST=0.0.0.0
+API_PORT=8000
+VLLM_GEN_HOST=your-vllm-gen-server.com
+VLLM_GEN_PORT=8001
+VLLM_GEN_MODEL=Qwen/Qwen2.5-7B-Instruct
+VLLM_EMBED_HOST=your-vllm-embed-server.com
+VLLM_EMBED_PORT=8002
+VLLM_EMBED_MODEL=BAAI/bge-m3
+VLLM_RERANK_HOST=your-vllm-reranking-server.com
+VLLM_RERANK_PORT=8003
+VLLM_RERANK_MODEL = BAAI/bge-reranker-base
